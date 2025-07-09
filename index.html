@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover Your Future Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="text-gray-800">
+    <!-- Top Header Language Selection Section -->
+    <div class="top-header md:block">
+      <div
+        class="container mx-auto px-6 md:px-12 flex justify-end items-center"
+      >
+        <div class="language-selector">
+          <img
+            src="https://flagcdn.com/gb.svg"
+            alt="English Flag"
+            class="mr-2"
+          />
+          <span>English</span>
+          <i class="fas fa-chevron-down ml-1 text-xs"></i>
+          <div class="language-dropdown-content">
+            <a href="#">
+              <img
+                src="https://flagcdn.com/gb.svg"
+                alt="English Flag"
+                class="inline-block mr-2"
+                style="width: 20px; height: 15px"
+              />
+              English
+            </a>
+            <a href="#">
+              <img
+                src="https://flagcdn.com/ae.svg"
+                alt="Arabic Flag"
+                class="inline-block mr-2"
+                style="width: 20px; height: 15px"
+              />
+              Arabic
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header Section -->
+    <header
+      class="bg-white shadow-sm py-4 px-6 md:px-12 top-8 left-0 w-full z-50 main-header-nav"
+    >
+      <nav class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <div>
+          <img
+            src="https://www.oiaproperties.com/storage/Setting/1746348407Oia%20Properties%20Logo%20-%20Dark%20-%20Large%20size-01%20(1).svg"
+            alt="OIA Properties Logo"
+            class="h-10"
+          />
+        </div>
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex space-x-8 font-bold text-blue-950">
+          <li>
+            <a href="#" class="hover:text-orange-600 transition duration-300"
+              >RENT/BUY</a
+            >
+          </li>
+          <!-- AREA Dropdown - Triggers Modal -->
+          <li class="dropdown">
+            <div
+              id="area-menu-trigger"
+              class="cursor-pointer hover:text-orange-600 transition duration-300 flex items-center"
+            >
+              AREA <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </div>
+            <!-- The modal itself acts as the dropdown content for AREA -->
+          </li>
+          <!-- PROJECT Dropdown -->
+          <li class="dropdown">
+            <div
+              class="cursor-pointer hover:text-orange-600 transition duration-300 flex items-center"
+            >
+              PROJECT <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="#">Residential Projects</a>
+              <a href="#">Commercial Projects</a>
+              <a href="#">Off-Plan Projects</a>
+            </div>
+          </li>
+          <!-- DEVELOPER Dropdown -->
+          <li class="dropdown">
+            <div
+              class="cursor-pointer hover:text-orange-600 transition duration-300 flex items-center"
+            >
+              DEVELOPER <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="#">Emaar Properties</a>
+              <a href="#">Nakheel</a>
+              <a href="#">Aldar Properties</a>
+            </div>
+          </li>
+          <li>
+            <a href="#" class="hover:text-orange-600 transition duration-300"
+              >LIST YOUR PROPERTY</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <div class="md:hidden flex flex-row gap-4">
+          <button class="heart-icon-button">
+            <i class="fas fa-regular fa-heart"></i>
+          </button>
+          <button
+            id="mobile-menu-button"
+            class="text-gray-700 focus:outline-none"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Right side buttons/dropdowns -->
+        <div class="hidden md:flex items-center space-x-4">
+          <button class="free-consultation-button">
+            Free Consultation <i class="fas fa-arrow-right"></i>
+          </button>
+          <button class="heart-icon-button">
+            <i class="fas fa-regular fa-heart"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden bg-white mt-4 py-2 shadow-md hidden"
+      >
+        <ul
+          class="flex flex-col items-center space-y-4 text-blue-950 font-bold"
+        >
+          <li>
+            <a
+              href="#"
+              class="hover:text-orange-600 transition duration-300 block w-full text-center py-2"
+              >RENT/BUY</a
+            >
+          </li>
+          <li>
+            <button
+              id="mobile-area-menu-trigger"
+              class="hover:text-orange-600 transition duration-300 block w-full text-center py-2 bg-transparent border-none text-blue-950 font-bold cursor-pointer flex items-center justify-center"
+            >
+              AREA <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </button>
+          </li>
+          <li class="w-full">
+            <button
+              class="mobile-dropdown-toggle hover:text-orange-600 transition 0 block w-full text-center py-2 bg-transparent border-none text-blue-950 font-bold cursor-pointer flex items-center justify-center"
+            >
+              PROJECT <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </button>
+            <div class="mobile-dropdown-content">
+              <a href="#">Residential Projects</a>
+              <a href="#">Commercial Projects</a>
+              <a href="#">Off-Plan Projects</a>
+            </div>
+          </li>
+
+          <li class="w-full">
+            <button
+              class="mobile-dropdown-toggle hover:text-blue-600 transition duration-300 block w-full text-center py-2 bg-transparent border-none text-blue-950 font-bold cursor-pointer flex items-center justify-center"
+            >
+              DEVELOPER <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </button>
+            <div class="mobile-dropdown-content">
+              <a href="#">Emaar Properties</a>
+              <a href="#">Nakheel</a>
+              <a href="#">Aldar Properties</a>
+            </div>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:text-orange-600 transition duration-300 block w-full text-center py-2"
+              >LIST YOUR PROPERTY</a
+            >
+          </li>
+          <li>
+            <button class="free-consultation-button">Free Consultation</button>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section-new-design text-white relative">
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="hero-content-wrapper">
+        <h1 class="hero-title-new">
+          DISCOVER YOUR MOST COMFORT PLACE FOR YOUR FUTURE LIFE
+        </h1>
+        <div class="flex flex-row justify-between items-baseline">
+          <div class="hidden md:flex hero-stats-new">
+            <div
+              class="hero-stat-item flex flex-row justify-between items-center text-lg"
+            >
+              <span class="text-3xl font-bold">5+</span>
+              <span>POPULAR AREAS</span>
+            </div>
+            <div
+              class="hidden md:block w-px h-16 bg-white opacity-40 rounded-full"
+            ></div>
+
+            <div
+              class="hero-stat-item flex flex-row justify-between items-center"
+            >
+              <span>PROJECTS</span>
+
+              <div
+                class="hidden md:block w-px h-16 bg-white opacity-40 rounded-full"
+              ></div>
+
+              <span class="text-3xl font-bold">11+</span>
+            </div>
+            <div
+              class="hero-stat-item flex flex-row justify-between items-center"
+            >
+              <span>YEARS EXPERIENCE</span>
+
+              <div
+                class="hidden md:block w-px h-16 bg-white opacity-40 rounded-full"
+              ></div>
+
+              <span class="px-2 text-3xl font-bold">6+</span>
+            </div>
+          </div>
+          <div class="free-consultation-button text-white">
+            <button>
+              All Projects <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Form -->
+        <div class="hero-search-form-new">
+          <div class="flex space-x-4 mb-6">
+            <button
+              id="tab-for-sale"
+              class="py-2 px-6 rounded-full font-semibold text-sm transition duration-300 bg-blue-600 text-white"
+            >
+              FOR SALE
+            </button>
+            <button
+              id="tab-for-rent"
+              class="py-2 px-6 rounded-full font-semibold text-sm transition duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300"
+            >
+              FOR RENT
+            </button>
+            <button
+              id="tab-reset"
+              class="hidden md:flex ml-auto text-white hover:text-gray-200 transition duration-300"
+            >
+              <i class="fas fa-arrow-rotate-right mr-2"></i>RESET
+            </button>
+          </div>
+          <div class="flex flex-row gap-2">
+            <form
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end"
+            >
+              <div class="lg:col-span-1 input-group">
+                <input
+                  type="text"
+                  id="city"
+                  placeholder="City, Community, area"
+                />
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="hidden md:flex lg:col-span-1 input-group">
+                <select id="property-type">
+                  <option>Property Type</option>
+                  <option>Apartment</option>
+                  <option>Villa</option>
+                  <option>Townhouse</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hidden md:flex lg:col-span-1 input-group">
+                <select id="bedroom">
+                  <option>Bedroom</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4+</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hidden md:flex lg:col-span-1 input-group">
+                <select id="property-size">
+                  <option>Property Size</option>
+                  <option>500-1000 sqft</option>
+                  <option>1000-2000 sqft</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hidden md:flex lg:col-span-1 input-group">
+                <select id="price">
+                  <option>Price</option>
+                  <option>$100,000 - $200,000</option>
+                  <option>$200,000 - $500,000</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </form>
+            <div class="free-consultation-button text-white">
+              <button class="hidden md:flex">Search</button>
+              <i class="md:hidden fas fa-search"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Properties Section -->
+    <section class="py-12 md:py-16 bg-gray-50 latest-properties-section-new">
+      <div class="container mx-auto px-6 md:px-12">
+        <div class="section-header">
+          <h2>LATEST PROPERTIES</h2>
+          <button class="whatsapp-icon-button">
+            <i class="fab fa-whatsapp"></i>
+          </button>
+        </div>
+
+        <div class="flex space-x-4 mb-8 tab-buttons">
+          <button id="latest-tab-for-sale" class="active-tab">FOR SALE</button>
+          <button id="latest-tab-for-rent" class="inactive-tab">
+            FOR RENT
+          </button>
+        </div>
+
+        <!-- Swiper for Latest Properties -->
+        <div class="swiper swiper-latest-properties overflow-hidden">
+          <div class="swiper-wrapper">
+            <!-- Property Card 1 -->
+            <div class="swiper-slide">
+              <div class="property-card-new">
+                <div class="image-container">
+                  <img
+                    src="https://www.oiaproperties.com//uploads/properties/APoSYsksNsCrTjXs3kbe2Rwi76er8GZJddKkOOey_watermarked.webp"
+                    alt="Property Image"
+                  />
+                  <span class="badge-for-sale">For Sale</span>
+                  <span class="property-type-overlay">Property Type</span>
+                  <button class="heart-icon-overlay">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                  <span class="price">$1,249,000</span>
+                </div>
+
+                <div class="content-area">
+                  <h3 class="building-name">BUILDING NAME</h3>
+                  <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Abu Dhabi, Yas Island
+                  </p>
+                  <div class="features">
+                    <span><i class="fas fa-bed"></i> 3 Bed</span>
+                    <span><i class="fas fa-bath"></i> 3 Bath</span>
+                    <span><i class="fas fa-ruler-combined"></i> 1142 FT</span>
+                  </div>
+                  <div class="action-buttons">
+                    <button class="call-email-button">
+                      <i class="fab fa-whatsapp border text-green-500"></i>
+                    </button>
+                    <button class="call-email-button">Call</button>
+                    <button class="call-email-button">Email</button>
+                  </div>
+                  <div class="agent-info">
+                    <div class="left">
+                      <img
+                        src="data:image/jpeg;base64,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"
+                        alt="Agent Avatar"
+                      />
+                      <span>Jane Smith</span>
+                    </div>
+                    <div class="right">
+                      <button>Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Property Card 2 -->
+            <div class="swiper-slide">
+              <div class="property-card-new">
+                <div class="image-container">
+                  <img
+                    src="https://www.oiaproperties.com//uploads/properties/APoSYsksNsCrTjXs3kbe2Rwi76er8GZJddKkOOey_watermarked.webp"
+                    alt="Property Image"
+                  />
+                  <span class="badge-for-sale">For Sale</span>
+                  <span class="property-type-overlay">Property Type</span>
+                  <button class="heart-icon-overlay">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                  <span class="price">$1,249,000</span>
+                </div>
+
+                <div class="content-area">
+                  <h3 class="building-name">BUILDING NAME</h3>
+                  <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Abu Dhabi, Yas Island
+                  </p>
+                  <div class="features">
+                    <span><i class="fas fa-bed"></i> 3 Bed</span>
+                    <span><i class="fas fa-bath"></i> 3 Bath</span>
+                    <span><i class="fas fa-ruler-combined"></i> 1142 FT</span>
+                  </div>
+                  <div class="action-buttons">
+                    <button class="call-email-button">
+                      <i class="fab fa-whatsapp border text-green-500"></i>
+                    </button>
+                    <button class="call-email-button">Call</button>
+                    <button class="call-email-button">Email</button>
+                  </div>
+                  <div class="agent-info">
+                    <div class="left">
+                      <img
+                        src="data:image/jpeg;base64,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"
+                        alt="Agent Avatar"
+                      />
+                      <span>Jane Smith</span>
+                    </div>
+                    <div class="right">
+                      <button>Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Property Card 3 -->
+            <div class="swiper-slide">
+              <div class="property-card-new">
+                <div class="image-container">
+                  <img
+                    src="https://www.oiaproperties.com//uploads/properties/APoSYsksNsCrTjXs3kbe2Rwi76er8GZJddKkOOey_watermarked.webp"
+                    alt="Property Image"
+                  />
+                  <span class="badge-for-sale">For Sale</span>
+                  <span class="property-type-overlay">Property Type</span>
+                  <button class="heart-icon-overlay">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                  <span class="price">$1,249,000</span>
+                </div>
+
+                <div class="content-area">
+                  <h3 class="building-name">BUILDING NAME</h3>
+                  <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Abu Dhabi, Yas Island
+                  </p>
+                  <div class="features">
+                    <span><i class="fas fa-bed"></i> 3 Bed</span>
+                    <span><i class="fas fa-bath"></i> 3 Bath</span>
+                    <span><i class="fas fa-ruler-combined"></i> 1142 FT</span>
+                  </div>
+                  <div class="action-buttons">
+                    <button class="call-email-button">
+                      <i class="fab fa-whatsapp border text-green-500"></i>
+                    </button>
+                    <button class="call-email-button">Call</button>
+                    <button class="call-email-button">Email</button>
+                  </div>
+                  <div class="agent-info">
+                    <div class="left">
+                      <img
+                        src="data:image/jpeg;base64,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"
+                        alt="Agent Avatar"
+                      />
+                      <span>Jane Smith</span>
+                    </div>
+                    <div class="right">
+                      <button>Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Property Card 4 -->
+            <div class="swiper-slide">
+              <div class="property-card-new">
+                <div class="image-container">
+                  <img
+                    src="https://www.oiaproperties.com//uploads/properties/APoSYsksNsCrTjXs3kbe2Rwi76er8GZJddKkOOey_watermarked.webp"
+                    alt="Property Image"
+                  />
+                  <span class="badge-for-sale">For Sale</span>
+                  <span class="property-type-overlay">Property Type</span>
+                  <button class="heart-icon-overlay">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                  <span class="price">$1,249,000</span>
+                </div>
+
+                <div class="content-area">
+                  <h3 class="building-name">BUILDING NAME</h3>
+                  <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Abu Dhabi, Yas Island
+                  </p>
+                  <div class="features">
+                    <span><i class="fas fa-bed"></i> 3 Bed</span>
+                    <span><i class="fas fa-bath"></i> 3 Bath</span>
+                    <span><i class="fas fa-ruler-combined"></i> 1142 FT</span>
+                  </div>
+                  <div class="action-buttons">
+                    <button class="call-email-button">
+                      <i class="fab fa-whatsapp border text-green-500"></i>
+                    </button>
+                    <button class="call-email-button">Call</button>
+                    <button class="call-email-button">Email</button>
+                  </div>
+                  <div class="agent-info">
+                    <div class="left">
+                      <img
+                        src="data:image/jpeg;base64,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"
+                        alt="Agent Avatar"
+                      />
+                      <span>Jane Smith</span>
+                    </div>
+                    <div class="right">
+                      <button>Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Off-Plan Projects Section -->
+    <section class="py-12 md:py-16 off-plan-section-new">
+      <div class="container mx-auto px-6 md:px-12">
+        <div class="section-header">
+          <h2>OFF-PLAN PROJECTS</h2>
+        </div>
+        <div class="bg-gray-200 rounded-md">
+          <div class="off-plan-project-card-new flex lg:flex-row">
+            <div class="left-content">
+              <h3 class="project-title text-center">SAADIYAT LAGOONS</h3>
+              <div
+                class="flex fle-row gap-5 justify-center text-xs font-semibold text-gray-700 md:text-xl"
+              >
+                <span>4 BHK VILLA + MAID'S</span>
+                <span>5 BHK VILLA + MAID'S</span>
+                <span>6 BHK VILLA + MAID'S</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-details flex flex-col lg:flex-row gap-3 p-5">
+            <div class="flex flex-col gap-4">
+              <p class="project-description">
+                Explore The Adventure Park, Stroll Across The Stunning
+                Eco-corniche, Soak In Unparalleled Cultural Experiences—in A
+                Choice Of 4 To 6-bed Villas Surrounded By Over 900,000m2 Of
+                Protected Wilderness.
+              </p>
+              <div>
+                <div>
+                  <p class="price">
+                    <strong>Starting Price:</strong> AED 3,200,000
+                  </p>
+                </div>
+                <div>
+                  <p><strong>Number of Bedrooms:</strong> 4, 5, 6</p>
+                </div>
+                <div>
+                  <p><strong>Unit Size (Approx.):</strong> 5000 sq.ft</p>
+                </div>
+                <div>
+                  <p><strong>Area Size From:</strong> 4,960 SQ. FT</p>
+                </div>
+              </div>
+              <button class="free-consultation-button w-max text-white">
+                Book Your Property
+              </button>
+            </div>
+
+            <div class="w-fit">
+              <img
+                class="rounded-md"
+                src="https://www.oiaproperties.com/images/hot_deals/Hero2_1750194927_b5ebc46d.webp"
+                alt="Saadiyat Lagoons"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section  -->
+    <footer class="bg-gray-800 text-white py-6">
+      <div class="container mx-auto px-6 md:px-12 text-center text-sm">
+        <p>&copy; 2025 Oia Properties . All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Area Selection Modal -->
+    <div id="area-modal-overlay" class="area-modal-overlay">
+      <div class="area-modal-content">
+        <button id="area-modal-close" class="area-modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+          Popular Areas in UAE
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 area-modal-grid">
+          <div class="flex flex-row space-x-8">
+            <div class="area-list-group">
+              <h4 class="text-gray-800">Abu Dhabi</h4>
+              <ul class="list-none p-0 m-0">
+                <li>
+                  <a href="#" class="block hover:underline">Yas Island</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline">Saadiyat Island</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline">Ramhan Island</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline">Al Reem Island</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline">Al Raha Beach</a>
+                </li>
+                <li><a href href="#">Fahad Island</a></li>
+              </ul>
+            </div>
+            <div class="area-list-group">
+              <h4 class="text-gray-800">Dubai</h4>
+              <ul class="list-none p-0 m-0">
+                <li>
+                  <a href="#" class="block hover:underline">Downtown Dubai</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline">Palm Jumeirah</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline">Dubai Marina</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline">Business Bay</a>
+                </li>
+                <li>
+                  <a href="#" class="block hover:underline"
+                    >Jumeirah Village Circle (JVC)</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
